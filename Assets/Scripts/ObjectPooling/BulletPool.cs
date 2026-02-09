@@ -8,8 +8,8 @@ namespace SpaceShooter.Pooling
     {
         [Header("Bullet pool set-up")]
         //[SerializeField] private Bullet bullet;
-        [SerializeField] private int bulletPoolSize = 10;
-        [SerializeField] private Transform bulletTransformParent;
+        [SerializeField] private int _bulletPoolSize = 10;
+        [SerializeField] private Transform _bulletTransformParent;
 
         // private variables
         // private ObjectPooling<Bullet> pool; // object pooling

@@ -8,8 +8,8 @@ namespace SpaceShooter.Pooling
     {
         [Header("Props pool set-up")]
         //[SerializeField] private Props props;
-        [SerializeField] private int propsPoolSize = 10;
-        [SerializeField] private Transform propsTransformParent;
+        [SerializeField] private int _propsPoolSize = 10;
+        [SerializeField] private Transform _propsTransformParent;
 
         // private variables
         // private ObjectPooling<Props> pool; // object pooling

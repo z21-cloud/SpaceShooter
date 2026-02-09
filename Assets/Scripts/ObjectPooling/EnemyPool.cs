@@ -8,8 +8,8 @@ namespace SpaceShooter.Pooling
     {
         [Header("Enemy pool set-up")]
         //[SerializeField] private Enemy enemy;
-        [SerializeField] private int enemyPoolSize = 10;
-        [SerializeField] private Transform enemyTransformParent;
+        [SerializeField] private int _enemyPoolSize = 10;
+        [SerializeField] private Transform _enemyTransformParent;
 
         // private variables
         // private ObjectPooling<Enemy> pool; // object pooling

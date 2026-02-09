@@ -8,12 +8,12 @@ namespace SpaceShooter.Enemies
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] private float damage = 25f;
-        [SerializeField] private float speed = 15f;
-        [SerializeField] private float lifetime = 5f;
+        [SerializeField] private float _damage = 25f;
+        [SerializeField] private float _speed = 15f;
+        [SerializeField] private float _lifetime = 5f;
 
-        private float currentLifetime;
-        private BulletPool pool;
+        private float _currentLifetime;
+        private BulletPool _pool;
 
         private void Update()
         {
@@ -28,8 +28,8 @@ namespace SpaceShooter.Enemies
 
         private void Lifetimer()
         {
-            currentLifetime += Time.deltaTime;
-            if(currentLifetime >= lifetime)
+            _currentLifetime += Time.deltaTime;
+            if(_currentLifetime >= _lifetime)
             {
                 ReturnToPool();
             }
@@ -40,7 +40,7 @@ namespace SpaceShooter.Enemies
             if(collision.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
                 Debug.Log(collision.gameObject.name);
-                damageable.TakeDamage(damage);
+                damageable.TakeDamage(_damage);
                 ReturnToPool();
             }
         }
