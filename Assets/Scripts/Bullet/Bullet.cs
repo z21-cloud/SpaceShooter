@@ -1,0 +1,54 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using SpaceShooter.Pooling;
+using System;
+
+namespace SpaceShooter.Enemies
+{
+    public class Bullet : MonoBehaviour
+    {
+        [SerializeField] private float damage = 25f;
+        [SerializeField] private float speed = 15f;
+        [SerializeField] private float lifetime = 5f;
+
+        private float currentLifetime;
+        private BulletPool pool;
+
+        private void Update()
+        {
+            HandleMovement();
+            Lifetimer();
+        }
+
+        private void HandleMovement()
+        {
+
+        }
+
+        private void Lifetimer()
+        {
+            currentLifetime += Time.deltaTime;
+            if(currentLifetime >= lifetime)
+            {
+                ReturnToPool();
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if(collision.TryGetComponent<IDamageable>(out IDamageable damageable))
+            {
+                Debug.Log(collision.gameObject.name);
+                damageable.TakeDamage(damage);
+                ReturnToPool();
+            }
+        }
+
+        private void ReturnToPool()
+        {
+            //return pool.Release(this);
+        }
+    }
+}
+
