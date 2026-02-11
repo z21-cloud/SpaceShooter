@@ -285,6 +285,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.z21.custom-editor": {
+      "version": "https://github.com/z21-cloud/com.z21.custom-editor.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "9cb2e110fc09becc2fedd4846f37356825d24d0d"
+    },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
       "depth": 0,

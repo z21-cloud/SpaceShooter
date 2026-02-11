@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using SpaceShooter.PlayerInput;
 using System;
+using SpaceShooter.Viewport;
 
 namespace SpaceShooter.PlayerMove
 {
@@ -11,10 +12,12 @@ namespace SpaceShooter.PlayerMove
         [SerializeField] private float speed = 5f;
 
         private IInputProvider _input;
+        private ICheckBoundaries _boundaries;
 
-        public void Construct(IInputProvider input)
+        public void Construct(IInputProvider input, ICheckBoundaries boundaries)
         {
             _input = input;
+            _boundaries = boundaries;
         }
 
         private void Update()
@@ -27,7 +30,14 @@ namespace SpaceShooter.PlayerMove
         private void HandleMovement()
         {
             Vector3 moveVector = new Vector3(_input.Horizontal, _input.Vertical, 0);
-            transform.position += moveVector * speed * Time.deltaTime;
+            Vector3 nextPosition = transform.position + moveVector * speed * Time.deltaTime;
+        
+            if(_boundaries != null)
+            {
+                nextPosition = _boundaries.CheckBoundaries(nextPosition);
+            }
+
+            transform.position = nextPosition;
         }
     }
 }
