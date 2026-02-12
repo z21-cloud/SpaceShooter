@@ -6,13 +6,24 @@ namespace SpaceShooter.EnemyPath
 {
     public class Path : MonoBehaviour, IPath
     {
-        [SerializeField] private List<Transform> path;
+        // config for set-up
+        [SerializeField] private WaveConfigSO waveConfig;
+        
+        // cache 
+        private List<Transform> waypoints;
+        
+        // counts for check if in bounds
+        public int PointsCount => waypoints.Count;
 
-        public int PointsCount => path.Count;
+        private void Awake()
+        {
+            // cache
+            waypoints = waveConfig.GetWaypoints(); 
+        }
 
         public Vector2 GetWaypoint(int index)
         {
-            if (index >= 0 && index < path.Count) return path[index].position;
+            if (index >= 0 && index < waypoints.Count) return waypoints[index].position;
 
             return Vector2.zero;
         }

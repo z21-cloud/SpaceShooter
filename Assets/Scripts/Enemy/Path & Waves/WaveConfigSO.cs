@@ -8,25 +8,35 @@ public class WaveConfigSO : ScriptableObject
     [SerializeField] private Transform pathPrefab;
     [SerializeField] private float enemyWaveMoveSpeed = 5f;
 
-    public Transform GetStartingWaypoint()
+    private List<Transform> _waypoints;
+
+    private List<Transform> Waypoints
     {
-        return pathPrefab.GetChild(0);
+        get
+        {
+            if (_waypoints == null || _waypoints.Count == 0) Construct();
+            return _waypoints;
+        }
     }
 
-    public float GetEnemyMoveSpeed()
+    private void Construct()
     {
-        return enemyWaveMoveSpeed;
-    }
-
-    public List<Transform> GetWaypoings()
-    {
-        List<Transform> waypoints = new List<Transform>(pathPrefab.childCount);
+        _waypoints = new List<Transform>(pathPrefab.childCount);
 
         for (int i = 0; i < pathPrefab.childCount; i++)
         {
-            waypoints.Add(pathPrefab.GetChild(i));
+            _waypoints.Add(pathPrefab.GetChild(i));
         }
-
-        return waypoints;
     }
+
+    public Transform GetStartingWaypoint() => Waypoints.Count > 0 ? Waypoints[0] : null;
+
+    public Transform GetCurrentWaypoint(int index)
+    {
+        return (index >= 0 && index < Waypoints.Count) ? Waypoints[index] : null;
+    }
+    public List<Transform> GetWaypoints() => Waypoints.Count > 0 ? Waypoints : null;
+
+    public int GetWaypointsCount() => Waypoints.Count;
+    public float GetEnemyMoveSpeed() => enemyWaveMoveSpeed;
 }

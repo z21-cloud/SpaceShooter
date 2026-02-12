@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SpaceShooter.Pooling
 {
-    public class EnemyPool : MonoBehaviour
+    public class EnemyPool : MonoBehaviour, IPoolReturn
     {
         [Header("Enemy pool set-up")]
         //[SerializeField] private Enemy enemy;
@@ -18,6 +18,11 @@ namespace SpaceShooter.Pooling
         {
             // constructor
             // pool = 
+        }
+
+        public void ReturnToPool(GameObject enemy)
+        {
+            //pool.Release => enemy.GetComponent<Enemy>();
         }
 
         // public Enemy Get() => pool.Get();

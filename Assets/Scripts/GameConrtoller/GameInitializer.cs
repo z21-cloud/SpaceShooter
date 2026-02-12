@@ -6,6 +6,7 @@ using SpaceShooter.PlayerMove;
 using SpaceShooter.Viewport;
 using SpaceShooter.Enemies;
 using SpaceShooter.EnemyPath;
+using SpaceShooter.Pooling;
 
 namespace SpaceShooter.GameConrtoller
 {
@@ -19,6 +20,7 @@ namespace SpaceShooter.GameConrtoller
         // enemy
         [SerializeField] private EnemyMovement _enemyMovement;
         [SerializeField] private Path _path;
+        [SerializeField] private EnemyPool _enemyPool;
 
         private void Awake()
         {
@@ -28,7 +30,8 @@ namespace SpaceShooter.GameConrtoller
                 );
 
             _enemyMovement.Construct(
-                _path
+                _path,
+                _enemyPool
                 );
         }
     }

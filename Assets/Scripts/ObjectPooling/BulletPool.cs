@@ -10,6 +10,7 @@ namespace SpaceShooter.Pooling
         //[SerializeField] private Bullet bullet;
         [SerializeField] private int _bulletPoolSize = 10;
         [SerializeField] private Transform _bulletTransformParent;
+        
 
         // private variables
         // private ObjectPooling<Bullet> pool; // object pooling

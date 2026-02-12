@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using SpaceShooter.EnemyPath;
+using SpaceShooter.Pooling;
 
 namespace SpaceShooter.Enemies
 {
@@ -11,17 +12,27 @@ namespace SpaceShooter.Enemies
         [SerializeField] private float speed = 5f;
 
         private IPath currentPath;
+        private IPoolReturn pool;
         private int currentWaypointIndex = 0;
         private const float DISTANCE_THRESHOLD = 0.1f;
 
-        public void Construct(IPath path)
+        public void Construct(IPath path, IPoolReturn poolReturn)
         {
             currentPath = path;
+            pool = poolReturn;
+            currentWaypointIndex = 0;
         }
 
         private void Update()
         {
-            if (currentPath == null || currentWaypointIndex >= currentPath.PointsCount) return;
+            if (currentPath == null || currentWaypointIndex >= currentPath.PointsCount)
+            {
+                pool?.ReturnToPool(this.gameObject);
+                return;
+            }
+
+            // if current waypoint index == current path . points count =>
+            // event to enemy controller to return to pool
 
             HandleMovement();
         }
