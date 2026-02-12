@@ -19,6 +19,7 @@ namespace SpaceShooter.EnemyPath
         {
             // cache
             waypoints = waveConfig.GetWaypoints(); 
+            Debug.Log($"Path: Constructed");
         }
 
         public Vector2 GetWaypoint(int index)
@@ -27,6 +28,8 @@ namespace SpaceShooter.EnemyPath
 
             return Vector2.zero;
         }
+
+        public Vector2 GetStartWaypoint() => waypoints[0].position;
     }
 }
 

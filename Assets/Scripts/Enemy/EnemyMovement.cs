@@ -31,9 +31,6 @@ namespace SpaceShooter.Enemies
                 return;
             }
 
-            // if current waypoint index == current path . points count =>
-            // event to enemy controller to return to pool
-
             HandleMovement();
         }
 

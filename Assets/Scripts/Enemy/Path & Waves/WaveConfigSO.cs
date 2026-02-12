@@ -21,6 +21,7 @@ public class WaveConfigSO : ScriptableObject
 
     private void Construct()
     {
+        Debug.Log($"Wave Config: Construcred");
         _waypoints = new List<Transform>(pathPrefab.childCount);
 
         for (int i = 0; i < pathPrefab.childCount; i++)
@@ -29,14 +30,11 @@ public class WaveConfigSO : ScriptableObject
         }
     }
 
-    public Transform GetStartingWaypoint() => Waypoints.Count > 0 ? Waypoints[0] : null;
-
     public Transform GetCurrentWaypoint(int index)
     {
         return (index >= 0 && index < Waypoints.Count) ? Waypoints[index] : null;
     }
     public List<Transform> GetWaypoints() => Waypoints.Count > 0 ? Waypoints : null;
 
-    public int GetWaypointsCount() => Waypoints.Count;
     public float GetEnemyMoveSpeed() => enemyWaveMoveSpeed;
 }

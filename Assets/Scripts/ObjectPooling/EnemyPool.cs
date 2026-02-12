@@ -7,26 +7,26 @@ namespace SpaceShooter.Pooling
     public class EnemyPool : MonoBehaviour, IPoolReturn
     {
         [Header("Enemy pool set-up")]
-        //[SerializeField] private Enemy enemy;
+        [SerializeField] private Enemy enemy;
         [SerializeField] private int _enemyPoolSize = 10;
         [SerializeField] private Transform _enemyTransformParent;
 
         // private variables
-        // private ObjectPooling<Enemy> pool; // object pooling
+        private ObjectPooling<Enemy> pool; // object pooling
 
         private void Awake()
         {
             // constructor
-            // pool = 
+            pool = new ObjectPooling<Enemy>(
+                enemy,
+                _enemyPoolSize,
+                _enemyTransformParent
+            );
         }
 
-        public void ReturnToPool(GameObject enemy)
-        {
-            //pool.Release => enemy.GetComponent<Enemy>();
-        }
+        public void ReturnToPool(GameObject enemy) => pool.Release(enemy.GetComponent<Enemy>());
 
-        // public Enemy Get() => pool.Get();
-        // public void Release(Enemy enemy) => pool.Relesase(enemy);
+        public Enemy Get() => pool.Get();
     }
 }
 

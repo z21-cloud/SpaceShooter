@@ -5,6 +5,7 @@ using SpaceShooter.PlayerInput;
 using SpaceShooter.PlayerMove;
 using SpaceShooter.Viewport;
 using SpaceShooter.Enemies;
+using SpaceShooter.EnemiesSpawner;
 using SpaceShooter.EnemyPath;
 using SpaceShooter.Pooling;
 
@@ -18,7 +19,7 @@ namespace SpaceShooter.GameConrtoller
         [SerializeField] private ViewportBoundaries _viewPort;
 
         // enemy
-        [SerializeField] private EnemyMovement _enemyMovement;
+        [SerializeField] private EnemySpawner _enemySpawner;
         [SerializeField] private Path _path;
         [SerializeField] private EnemyPool _enemyPool;
 
@@ -29,10 +30,13 @@ namespace SpaceShooter.GameConrtoller
                 _viewPort
                 );
 
-            _enemyMovement.Construct(
-                _path,
-                _enemyPool
+            _enemySpawner.Construct(
+                _enemyPool,
+                _path
                 );
+
+            // test
+            _enemySpawner.SpawnEnemy();
         }
     }
 }
