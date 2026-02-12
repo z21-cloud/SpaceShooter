@@ -28,12 +28,13 @@ namespace SpaceShooter.GameConrtoller
             _playerMovement.Construct(
                 _inputManager, 
                 _viewPort
-                );
+            );
 
             _enemySpawner.Construct(
                 _enemyPool,
+                _path,
                 _path
-                );
+            );
 
             // test
             _enemySpawner.SpawnEnemy();

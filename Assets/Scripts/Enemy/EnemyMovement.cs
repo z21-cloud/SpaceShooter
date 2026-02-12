@@ -9,16 +9,17 @@ namespace SpaceShooter.Enemies
 {
     public class EnemyMovement : MonoBehaviour
     {
-        [SerializeField] private float speed = 5f;
-
         private IPath currentPath;
         private IPoolReturn pool;
+        private IMoveable getSpeed;
         private int currentWaypointIndex = 0;
         private const float DISTANCE_THRESHOLD = 0.1f;
+        private float speed = 5f;
 
-        public void Construct(IPath path, IPoolReturn poolReturn)
+        public void Construct(IPath path, IMoveable moveable, IPoolReturn poolReturn)
         {
             currentPath = path;
+            getSpeed = moveable;
             pool = poolReturn;
             currentWaypointIndex = 0;
         }
@@ -37,6 +38,8 @@ namespace SpaceShooter.Enemies
         private void HandleMovement()
         {
             Vector2 targetPosition = currentPath.GetWaypoint(currentWaypointIndex);
+
+            speed = getSpeed.GetWaveSpeed();
 
             transform.position = Vector2.MoveTowards(
                     transform.position,

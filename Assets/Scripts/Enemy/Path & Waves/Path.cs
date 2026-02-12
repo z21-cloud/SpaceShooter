@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using SpaceShooter.Enemies;
 
 namespace SpaceShooter.EnemyPath
 {
-    public class Path : MonoBehaviour, IPath
+    public class Path : MonoBehaviour, IPath, IMoveable
     {
         // config for set-up
         [SerializeField] private WaveConfigSO waveConfig;
@@ -28,6 +29,8 @@ namespace SpaceShooter.EnemyPath
 
             return Vector2.zero;
         }
+
+        public float GetWaveSpeed() => waveConfig.GetEnemyMoveSpeed();
 
         public Vector2 GetStartWaypoint() => waypoints[0].position;
     }

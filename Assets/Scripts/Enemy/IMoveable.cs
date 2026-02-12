@@ -6,7 +6,7 @@ namespace SpaceShooter.Enemies
 {
     public interface IMoveable
     {
-
+        public float GetWaveSpeed();
     }
 }
 
