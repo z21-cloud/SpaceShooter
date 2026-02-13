@@ -4,30 +4,37 @@ using System.Collections.Generic;
 using SpaceShooter.Pooling;
 using SpaceShooter.EnemyPath;
 using SpaceShooter.Enemies;
+using SpaceShooter.PathManagement;
 
 namespace SpaceShooter.EnemiesSpawner
 {
     public class EnemySpawner : MonoBehaviour
     {
-        private IPath path;
-        private IMoveable moveable;
         private EnemyPool pool;
-        public void Construct(EnemyPool enemyPool, IPath currentPath, IMoveable currentMoveable)
+        private PathManager pathManager;
+
+        public void Construct(EnemyPool enemyPool, PathManager paths)
         {
             pool = enemyPool;
-            path = currentPath;
-            moveable = currentMoveable;
+            pathManager = paths;
         }
 
-        public void SpawnEnemy()
+        public void SpawnEnemy(int pathIndex)
         {
+            Path currentPath = pathManager.GetPath(pathIndex);
+            SpawnEnemyOnPath(currentPath);
+        }
+
+        private void SpawnEnemyOnPath(Path currentPath)
+        {
+            if (currentPath == null) return;
+
             Enemy enemy = pool.Get();
+            EnemyMovement movement = enemy.GetComponent<EnemyMovement>();
 
-            EnemyMovement movement = enemy.gameObject.GetComponent<EnemyMovement>();
+            movement.Construct(currentPath, currentPath, pool);
 
-            movement.Construct(path, moveable, pool);
-
-            enemy.gameObject.transform.position = path.GetWaypoint(0);
+            enemy.transform.position = currentPath.GetWaypoint(0);
         }
     }
 }
