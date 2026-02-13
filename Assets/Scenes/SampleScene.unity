@@ -667,6 +667,7 @@ MonoBehaviour:
   _enemySpawner: {fileID: 528429192}
   _enemyPool: {fileID: 528429190}
   _pathManager: {fileID: 2050203884}
+  _waveConrtoller: {fileID: 2088752201}
 --- !u!1 &1814830773
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,6 +758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2088752199}
   - component: {fileID: 2088752200}
+  - component: {fileID: 2088752201}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -791,6 +793,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b20090087f5e9408b011bc0f2f490b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2088752201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088752198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d633d27cbca56c40a7247b76b6de667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveConfig:
+  - {fileID: 11400000, guid: 2ecaa4ccaef970543994bcba276ef7e4, type: 2}
+  - {fileID: 11400000, guid: 8d7cd489325b93249b55986a0128e826, type: 2}
+  delayBetweenEnemySpawns: 1
+  delayBetweenWaves: 3
 --- !u!1001 &1134204532518354474
 PrefabInstance:
   m_ObjectHideFlags: 0

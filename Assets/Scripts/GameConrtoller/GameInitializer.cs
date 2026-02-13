@@ -9,6 +9,7 @@ using SpaceShooter.EnemiesSpawner;
 using SpaceShooter.EnemyPath;
 using SpaceShooter.Pooling;
 using SpaceShooter.PathManagement;
+using SpaceShooter.WaveManagement;
 
 namespace SpaceShooter.GameConrtoller
 {
@@ -25,6 +26,7 @@ namespace SpaceShooter.GameConrtoller
         [SerializeField] private EnemySpawner _enemySpawner;
         [SerializeField] private EnemyPool _enemyPool;
         [SerializeField] private PathManager _pathManager;
+        [SerializeField] private WaveController _waveConrtoller;
 
         private void Awake()
         {
@@ -38,9 +40,14 @@ namespace SpaceShooter.GameConrtoller
                 _pathManager
             );
 
-            // test
-            _enemySpawner.SpawnEnemy(0);
-            _enemySpawner.SpawnEnemy(1);
+            _waveConrtoller.Construct(
+                _enemySpawner
+            );
+        }
+
+        private void Start()
+        {
+            _waveConrtoller.StartWaves();
         }
     }
 }

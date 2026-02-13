@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using SpaceShooter.Enemies;
+using SpaceShooter.EnemiesWaveConfig;
 
 namespace SpaceShooter.EnemyPath
 {
@@ -9,17 +10,17 @@ namespace SpaceShooter.EnemyPath
     {
         // config for set-up
         [SerializeField] private WaveConfigSO waveConfig;
-        
+
         // cache 
         private List<Transform> waypoints;
-        
+
         // counts for check if in bounds
         public int PointsCount => waypoints.Count;
 
         private void Awake()
         {
             // cache
-            waypoints = waveConfig.GetWaypoints(); 
+            waypoints = waveConfig.GetWaypoints();
             Debug.Log($"Path: Constructed");
         }
 
