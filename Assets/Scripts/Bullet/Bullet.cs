@@ -3,17 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using SpaceShooter.Pooling;
 using System;
+using SpaceShooter.Damageable;
 
-namespace SpaceShooter.Enemies
+namespace SpaceShooter.Shooting
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] private float _damage = 25f;
-        [SerializeField] private float _speed = 15f;
-        [SerializeField] private float _lifetime = 5f;
+        [SerializeField] private float damage = 25f;
+        [SerializeField] private float speed = 15f;
+        [SerializeField] private float lifetime = 5f;
 
-        private float _currentLifetime;
-        private BulletPool _pool;
+        private float currentLifetime;
+        private IPoolReturn pool;
+
+        public void Initialize(IPoolReturn pool)
+        {
+            this.pool = pool;
+            currentLifetime = 0;
+        }
 
         private void Update()
         {
@@ -23,13 +30,13 @@ namespace SpaceShooter.Enemies
 
         private void HandleMovement()
         {
-
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
         }
 
         private void Lifetimer()
         {
-            _currentLifetime += Time.deltaTime;
-            if(_currentLifetime >= _lifetime)
+            currentLifetime += Time.deltaTime;
+            if(currentLifetime >= lifetime)
             {
                 ReturnToPool();
             }
@@ -40,14 +47,14 @@ namespace SpaceShooter.Enemies
             if(collision.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
                 Debug.Log(collision.gameObject.name);
-                damageable.TakeDamage(_damage);
+                damageable.TakeDamage(damage);
                 ReturnToPool();
             }
         }
 
         private void ReturnToPool()
         {
-            //return pool.Release(this);
+            pool.ReturnToPool(gameObject);
         }
     }
 }

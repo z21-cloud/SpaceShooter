@@ -16,10 +16,6 @@ namespace SpaceShooter.WaveManagement
         private EnemySpawner enemySpawner;
         private int currentWaveIndex = 0;
         private bool isSpawning = false;
-        private List<Transform> waypoints;
-
-        // counts for check if in bounds
-        public int PointsCount => waypoints.Count;
 
         public void Construct(EnemySpawner spawner)
         {
@@ -83,5 +79,4 @@ namespace SpaceShooter.WaveManagement
 
         public int GetTotalWaves() => waveConfig.Count;
     }
-
 }

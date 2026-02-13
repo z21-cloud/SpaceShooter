@@ -10,16 +10,21 @@ using SpaceShooter.EnemyPath;
 using SpaceShooter.Pooling;
 using SpaceShooter.PathManagement;
 using SpaceShooter.WaveManagement;
+using SpaceShooter.Shooting;
 
 namespace SpaceShooter.GameConrtoller
 {
     public class GameInitializer : MonoBehaviour
     {
         // player
-        [Header("Player set-up")]
+        [Header("Player set-up || Movement")]
         [SerializeField] private InputManager _inputManager;
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private ViewportBoundaries _viewPort;
+
+        [Header("Player set-up || Shooting")]
+        [SerializeField] private BulletPool _bulletPool;
+        [SerializeField] private PlayerShooting _playerShooting;
 
         // enemy
         [Header("Enemy set-up")]
@@ -33,6 +38,12 @@ namespace SpaceShooter.GameConrtoller
             _playerMovement.Construct(
                 _inputManager, 
                 _viewPort
+            );
+
+            _playerShooting.Construct(
+                _inputManager,
+                _bulletPool,
+                _bulletPool
             );
 
             _enemySpawner.Construct(

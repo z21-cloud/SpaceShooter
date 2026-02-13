@@ -5,7 +5,7 @@ using SpaceShooter.Enemies;
 
 namespace SpaceShooter.EnemiesBullet
 {
-    public class EnemyBullet : Bullet
+    public class EnemyBullet : MonoBehaviour
     {
 
     }
