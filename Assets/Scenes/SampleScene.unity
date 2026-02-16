@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4920552409348238472, guid: 17f316fbc6bbe124ca06695071874655, type: 3}
-  _enemyPoolSize: 10
+  _enemyPoolSize: 100
   _enemyTransformParent: {fileID: 528429189}
 --- !u!114 &528429192
 MonoBehaviour:
@@ -569,7 +569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5481439b70253d14e98b166b80e713f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _propsPoolSize: 10
+  _propsPoolSize: 100
   _propsTransformParent: {fileID: 0}
 --- !u!1 &1411048453 stripped
 GameObject:
@@ -593,7 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c631dd54b20a4f4419087569ec7638fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenShots: 1
+  timeBetweenShots: 0.25
   shootPoint: {fileID: 1844347787}
 --- !u!1 &1789060817
 GameObject:
@@ -640,7 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 4556534563872427488, guid: 062bda5543e533a4fb64b523dc357e22, type: 3}
-  _bulletPoolSize: 10
+  _bulletPoolSize: 100
   _bulletTransformParent: {fileID: 1789060818}
 --- !u!1 &1804824673
 GameObject:
@@ -1058,6 +1058,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8269827844020934571, guid: 959d7bf4819d6cc4a810a8fb7c40bd6e, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8269827844020934571, guid: 959d7bf4819d6cc4a810a8fb7c40bd6e, type: 3}
       propertyPath: m_Name
       value: Path (1)
