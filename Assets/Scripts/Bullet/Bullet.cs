@@ -15,10 +15,12 @@ namespace SpaceShooter.Shooting
 
         private float currentLifetime;
         private IPoolReturn pool;
+        private Vector2 direction;
 
-        public void Initialize(IPoolReturn pool)
+        public void Initialize(IPoolReturn pool, Vector2 direction)
         {
             this.pool = pool;
+            this.direction = direction;
             currentLifetime = 0;
         }
 
@@ -30,7 +32,7 @@ namespace SpaceShooter.Shooting
 
         private void HandleMovement()
         {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
+            transform.Translate(direction * speed * Time.deltaTime);
         }
 
         private void Lifetimer()

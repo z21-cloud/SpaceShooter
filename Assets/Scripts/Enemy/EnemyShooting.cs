@@ -1,38 +1,33 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using SpaceShooter.PlayerInput;
-using System;
+using SpaceShooter.Shooting;
 using SpaceShooter.Pooling;
+using UnityEngine.Windows;
 
 namespace SpaceShooter.Shooting
 {
-    public class PlayerShooting : MonoBehaviour
+    public class EnemyShooting : MonoBehaviour
     {
-        [Header("shooting set-up")]
         [SerializeField] private float timeBetweenShots = 1f;
         [SerializeField] private Transform shootPoint;
-        [SerializeField] private Vector2 bulletDirection = Vector2.up;
+        [SerializeField] private Vector2 bulletDirection = Vector2.down;
 
         private float currentTimer = 0f;
 
         private IBulletProvider _bulletProvider;
         private IPoolReturn _poolReturn;
-        private IInputProvider _input;
 
-        public void Construct(IInputProvider input, IBulletProvider bulletProvider, IPoolReturn poolReturn)
+        public void Construct(IBulletProvider bulletProvider, IPoolReturn poolReturn)
         {
-            _input = input;
             _bulletProvider = bulletProvider;
             _poolReturn = poolReturn;
         }
 
         private void Update()
         {
-            if (_input == null) return;
-
             currentTimer += Time.deltaTime;
-            if (_input.MouseButton && currentTimer >= timeBetweenShots)
+            if (currentTimer >= timeBetweenShots)
             {
                 HandleShooting();
                 currentTimer = 0f;
@@ -50,3 +45,4 @@ namespace SpaceShooter.Shooting
         }
     }
 }
+

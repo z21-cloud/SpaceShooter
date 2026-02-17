@@ -23,7 +23,7 @@ namespace SpaceShooter.GameConrtoller
         [SerializeField] private ViewportBoundaries _viewPort;
 
         [Header("Player set-up || Shooting")]
-        [SerializeField] private BulletPool _bulletPool;
+        [SerializeField] private BulletPool _playerBulletPool;
         [SerializeField] private PlayerShooting _playerShooting;
 
         // enemy
@@ -32,6 +32,7 @@ namespace SpaceShooter.GameConrtoller
         [SerializeField] private EnemyPool _enemyPool;
         [SerializeField] private PathManager _pathManager;
         [SerializeField] private WaveController _waveConrtoller;
+        [SerializeField] private BulletPool _enemyBulletPool;
 
         private void Awake()
         {
@@ -42,13 +43,14 @@ namespace SpaceShooter.GameConrtoller
 
             _playerShooting.Construct(
                 _inputManager,
-                _bulletPool,
-                _bulletPool
+                _playerBulletPool,
+                _playerBulletPool
             );
 
             _enemySpawner.Construct(
                 _enemyPool,
-                _pathManager
+                _pathManager,
+                _enemyBulletPool
             );
 
             _waveConrtoller.Construct(

@@ -6,18 +6,21 @@ using SpaceShooter.EnemyPath;
 using SpaceShooter.Enemies;
 using SpaceShooter.PathManagement;
 using SpaceShooter.Health;
+using SpaceShooter.Shooting;
 
 namespace SpaceShooter.EnemiesSpawner
 {
     public class EnemySpawner : MonoBehaviour
     {
-        private EnemyPool pool;
+        private EnemyPool enemyPool;
         private PathManager pathManager;
+        private BulletPool bulletPool;
 
-        public void Construct(EnemyPool enemyPool, PathManager paths)
+        public void Construct(EnemyPool enemyPool, PathManager pathManager, BulletPool bulletPool)
         {
-            pool = enemyPool;
-            pathManager = paths;
+            this.enemyPool = enemyPool;
+            this.pathManager = pathManager;
+            this.bulletPool = bulletPool;
         }
 
         public void SpawnEnemy(int pathIndex)
@@ -30,17 +33,22 @@ namespace SpaceShooter.EnemiesSpawner
         {
             if (currentPath == null) return;
 
-            Enemy enemy = pool.Get();
+            Enemy enemy = enemyPool.Get();
 
             if(enemy.TryGetComponent<EnemyMovement>(out var movement))
             {
-                movement.Construct(currentPath, currentPath, pool);
+                movement.Construct(currentPath, currentPath, enemyPool);
                 enemy.transform.position = currentPath.GetWaypoint(0);
             }
 
             if(enemy.TryGetComponent<EnemyDeathHandler>(out var deathHandler))
             {
-                deathHandler.Initialize(pool);
+                deathHandler.Initialize(enemyPool);
+            }
+
+            if(enemy.TryGetComponent<EnemyShooting>(out var enemyShooting))
+            {
+                enemyShooting.Construct(bulletPool, bulletPool);
             }
         }
     }
