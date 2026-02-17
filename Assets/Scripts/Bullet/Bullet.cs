@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using SpaceShooter.Pooling;
 using System;
-using SpaceShooter.Damageable;
+using SpaceShooter.Health;
 
 namespace SpaceShooter.Shooting
 {
