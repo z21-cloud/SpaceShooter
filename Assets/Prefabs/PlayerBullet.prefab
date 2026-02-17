@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4858028235003723160}
-  - component: {fileID: 7487611871209576564}
-  - component: {fileID: 9076836568441986783}
   - component: {fileID: 4556534563872427488}
   - component: {fileID: 8177592591488898003}
+  - component: {fileID: 7487611871209576564}
+  - component: {fileID: 9076836568441986783}
   - component: {fileID: 4115113753851577986}
   m_Layer: 8
   m_Name: PlayerBullet
@@ -36,6 +36,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4556534563872427488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144613040510342081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99a252ee65868b4098dcae312880157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 25
+  speed: 15
+  lifetime: 1.5
+--- !u!114 &8177592591488898003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144613040510342081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5355b6d688e0e74ea5fc92356579328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &7487611871209576564
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -125,7 +152,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.005439043, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -135,35 +162,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.23, y: 0.56}
+  m_Size: {x: 0.26885033, y: 0.56}
   m_EdgeRadius: 0
---- !u!114 &4556534563872427488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9144613040510342081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e99a252ee65868b4098dcae312880157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 25
-  speed: 15
-  lifetime: 1.5
---- !u!114 &8177592591488898003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9144613040510342081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5355b6d688e0e74ea5fc92356579328, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &4115113753851577986
 Rigidbody2D:
   serializedVersion: 5
