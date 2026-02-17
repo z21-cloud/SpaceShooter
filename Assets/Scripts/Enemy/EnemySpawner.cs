@@ -5,6 +5,7 @@ using SpaceShooter.Pooling;
 using SpaceShooter.EnemyPath;
 using SpaceShooter.Enemies;
 using SpaceShooter.PathManagement;
+using SpaceShooter.Health;
 
 namespace SpaceShooter.EnemiesSpawner
 {
@@ -30,11 +31,17 @@ namespace SpaceShooter.EnemiesSpawner
             if (currentPath == null) return;
 
             Enemy enemy = pool.Get();
-            EnemyMovement movement = enemy.GetComponent<EnemyMovement>();
 
-            movement.Construct(currentPath, currentPath, pool);
+            if(enemy.TryGetComponent<EnemyMovement>(out var movement))
+            {
+                movement.Construct(currentPath, currentPath, pool);
+                enemy.transform.position = currentPath.GetWaypoint(0);
+            }
 
-            enemy.transform.position = currentPath.GetWaypoint(0);
+            if(enemy.TryGetComponent<EnemyDeathHandler>(out var deathHandler))
+            {
+                deathHandler.Initialize(pool);
+            }
         }
     }
 }

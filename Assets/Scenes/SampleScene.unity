@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4920552409348238472, guid: 17f316fbc6bbe124ca06695071874655, type: 3}
-  _enemyPoolSize: 100
+  _enemyPoolSize: 4
   _enemyTransformParent: {fileID: 528429189}
 --- !u!114 &528429192
 MonoBehaviour:
@@ -912,7 +912,8 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6580412210717281253, guid: 8338020959f14cc4ebfc4d7b0076de3f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

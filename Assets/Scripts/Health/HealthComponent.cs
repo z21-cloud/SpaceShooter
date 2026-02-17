@@ -1,20 +1,22 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 namespace SpaceShooter.Health
 {
     public class HealthComponent : MonoBehaviour, IHealthProvider, IDamageable, IHealable
     {
         [Header("Health set-up")]
+        [SerializeField] private float maxHealth = 100f;
         [SerializeField] private float startHealth = 100f;
         public float CurrentHealth { get; private set; }
 
         private const float DEATH_THRESHOLD = 0f;
 
-        private void Start()
+        private void OnEnable()
         {
-            CurrentHealth = startHealth;
+            ResetHealth();
         }
 
         public void TakeDamage(float damage)
@@ -29,8 +31,27 @@ namespace SpaceShooter.Health
                 {
                     Debug.Log($"Health Component: Death provided {gameObject.name}");
                     deathable.Death();
+                    ResetHealth();
                 }
             }
+        }
+
+        private void ResetHealth()
+        {
+            CurrentHealth = startHealth;
+        }
+
+        public void Heal(float amount)
+        {
+            Debug.Log($"Health Component: Heal recieved {gameObject.name}; Current health: {CurrentHealth}");
+
+            CurrentHealth += amount;
+            CurrentHealth = Mathf.Max(CurrentHealth, maxHealth);    
+        }
+
+        private void OnDisable()
+        {
+            ResetHealth();
         }
     }
 }
