@@ -11,6 +11,7 @@ using SpaceShooter.Pooling;
 using SpaceShooter.PathManagement;
 using SpaceShooter.WaveManagement;
 using SpaceShooter.Shooting;
+using SpaceShooter.Effects;
 
 namespace SpaceShooter.GameConrtoller
 {
@@ -30,9 +31,14 @@ namespace SpaceShooter.GameConrtoller
         [Header("Enemy set-up")]
         [SerializeField] private EnemySpawner _enemySpawner;
         [SerializeField] private EnemyPool _enemyPool;
+        [SerializeField] private BulletPool _enemyBulletPool;
+
+        [Header("Wave & path set-up")]
         [SerializeField] private PathManager _pathManager;
         [SerializeField] private WaveController _waveConrtoller;
-        [SerializeField] private BulletPool _enemyBulletPool;
+
+        [Header("Effects")]
+        [SerializeField] private EffectManager _effectManager;
 
         private void Awake()
         {
@@ -44,13 +50,15 @@ namespace SpaceShooter.GameConrtoller
             _playerShooting.Construct(
                 _inputManager,
                 _playerBulletPool,
-                _playerBulletPool
+                _playerBulletPool,
+                _effectManager
             );
 
             _enemySpawner.Construct(
                 _enemyPool,
                 _pathManager,
-                _enemyBulletPool
+                _enemyBulletPool,
+                _effectManager
             );
 
             _waveConrtoller.Construct(

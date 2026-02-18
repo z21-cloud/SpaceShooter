@@ -265,6 +265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57eb8d8a7b94c34d97c9119ddcbc85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenShots: 1
+  timeBetweenShots: 0.5
   shootPoint: {fileID: 5494447961439088690}
   bulletDirection: {x: 0, y: -1}

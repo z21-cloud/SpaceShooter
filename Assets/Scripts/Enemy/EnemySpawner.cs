@@ -7,6 +7,7 @@ using SpaceShooter.Enemies;
 using SpaceShooter.PathManagement;
 using SpaceShooter.Health;
 using SpaceShooter.Shooting;
+using SpaceShooter.Effects;
 
 namespace SpaceShooter.EnemiesSpawner
 {
@@ -15,12 +16,17 @@ namespace SpaceShooter.EnemiesSpawner
         private EnemyPool enemyPool;
         private PathManager pathManager;
         private BulletPool bulletPool;
+        private IEffectService effectService;
 
-        public void Construct(EnemyPool enemyPool, PathManager pathManager, BulletPool bulletPool)
+        public void Construct(EnemyPool enemyPool,
+            PathManager pathManager, 
+            BulletPool bulletPool, 
+            IEffectService effectService)
         {
             this.enemyPool = enemyPool;
             this.pathManager = pathManager;
             this.bulletPool = bulletPool;
+            this.effectService = effectService;
         }
 
         public void SpawnEnemy(int pathIndex)
@@ -48,7 +54,7 @@ namespace SpaceShooter.EnemiesSpawner
 
             if(enemy.TryGetComponent<EnemyShooting>(out var enemyShooting))
             {
-                enemyShooting.Construct(bulletPool, bulletPool);
+                enemyShooting.Construct(bulletPool, bulletPool, effectService);
             }
         }
     }

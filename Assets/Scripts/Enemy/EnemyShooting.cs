@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using SpaceShooter.Shooting;
 using SpaceShooter.Pooling;
 using UnityEngine.Windows;
+using SpaceShooter.Effects;
 
 namespace SpaceShooter.Shooting
 {
@@ -17,11 +18,13 @@ namespace SpaceShooter.Shooting
 
         private IBulletProvider _bulletProvider;
         private IPoolReturn _poolReturn;
+        private IEffectService _effectService;
 
-        public void Construct(IBulletProvider bulletProvider, IPoolReturn poolReturn)
+        public void Construct(IBulletProvider bulletProvider, IPoolReturn poolReturn, IEffectService effectService)
         {
             _bulletProvider = bulletProvider;
             _poolReturn = poolReturn;
+            _effectService = effectService;
         }
 
         private void Update()
@@ -41,7 +44,7 @@ namespace SpaceShooter.Shooting
             bullet.transform.position = shootPoint.position;
             bullet.transform.rotation = shootPoint.rotation;
 
-            bullet.Initialize(_poolReturn, bulletDirection);
+            bullet.Initialize(_poolReturn, bulletDirection, _effectService);
         }
     }
 }

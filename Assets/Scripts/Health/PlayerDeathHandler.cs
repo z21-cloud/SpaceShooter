@@ -11,7 +11,7 @@ namespace SpaceShooter.Health
             Debug.Log($"Player Death Handler: {gameObject.name}");
             Destroy(gameObject);
 
-            //effects & UI 
+            // effects & UI 
             // based on events. Destroy for testing
         }
     }

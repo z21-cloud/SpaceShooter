@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using SpaceShooter.PlayerInput;
 using System;
 using SpaceShooter.Pooling;
+using SpaceShooter.Effects;
 
 namespace SpaceShooter.Shooting
 {
@@ -17,14 +18,19 @@ namespace SpaceShooter.Shooting
         private float currentTimer = 0f;
 
         private IBulletProvider _bulletProvider;
-        private IPoolReturn _poolReturn;
+        private IPoolReturn _poolReturn; // bullet pool to return
         private IInputProvider _input;
+        private IEffectService _effectService;
 
-        public void Construct(IInputProvider input, IBulletProvider bulletProvider, IPoolReturn poolReturn)
+        public void Construct(IInputProvider input, 
+            IBulletProvider bulletProvider, 
+            IPoolReturn poolReturn,
+            IEffectService effectService)
         {
             _input = input;
             _bulletProvider = bulletProvider;
             _poolReturn = poolReturn;
+            _effectService = effectService;
         }
 
         private void Update()
@@ -46,7 +52,7 @@ namespace SpaceShooter.Shooting
             bullet.transform.position = shootPoint.position;
             bullet.transform.rotation = shootPoint.rotation;
 
-            bullet.Initialize(_poolReturn, bulletDirection);
+            bullet.Initialize(_poolReturn, bulletDirection, _effectService);
         }
     }
 }

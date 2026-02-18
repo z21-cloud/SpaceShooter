@@ -65,6 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenShots: 0.25
   shootPoint: {fileID: 5818298686867204166}
+  bulletDirection: {x: 0, y: 1}
 --- !u!114 &6580412210717281253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +75,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4241185242419634706}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd8b0e375fdafaf41bae2c5b013bc333, type: 3}
+  m_Script: {fileID: 11500000, guid: 74d2e557183174a43873566539859b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2080122042216843493
@@ -89,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3abc88c45514b489062b616a802c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
   startHealth: 100
 --- !u!68 &4485679875637120858
 EdgeCollider2D:
