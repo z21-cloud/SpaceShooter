@@ -39,7 +39,6 @@ namespace SpaceShooter.GameConrtoller
         [SerializeField] private WaveController _waveConrtoller;
 
         [Header("Effects")]
-        [SerializeField] private EffectManager _effectManager;
         [SerializeField] private CameraShake _playerCameraShake;
 
         private void Awake()
@@ -52,15 +51,13 @@ namespace SpaceShooter.GameConrtoller
             _playerShooting.Construct(
                 _inputManager,
                 _playerBulletPool,
-                _playerBulletPool,
-                _effectManager
+                _playerBulletPool
             );
 
             _enemySpawner.Construct(
                 _enemyPool,
                 _pathManager,
-                _enemyBulletPool,
-                _effectManager
+                _enemyBulletPool
             );
 
             _waveConrtoller.Construct(

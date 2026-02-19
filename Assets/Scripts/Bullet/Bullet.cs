@@ -5,6 +5,7 @@ using SpaceShooter.Pooling;
 using System;
 using SpaceShooter.Health;
 using SpaceShooter.Effects;
+using SpaceShooter.GameConrtoller;
 
 namespace SpaceShooter.Shooting
 {
@@ -18,13 +19,11 @@ namespace SpaceShooter.Shooting
         private float currentLifetime;
         private Vector2 direction;
         private IPoolReturn pool;
-        private IEffectService effectService;
 
-        public void Initialize(IPoolReturn pool, Vector2 direction, IEffectService effectService)
+        public void Initialize(IPoolReturn pool, Vector2 direction)
         {
             this.pool = pool;
             this.direction = direction;
-            this.effectService = effectService;
             currentLifetime = 0;
         }
 
@@ -55,7 +54,7 @@ namespace SpaceShooter.Shooting
                 Debug.Log(collision.gameObject.name);
                 damageable.TakeDamage(damage);
 
-                effectService?.PlayHitEffect(transform.position);
+                ServiceLocator.GetEffectService().PlayHitEffect(transform.position);
 
                 ReturnToPool();
             }

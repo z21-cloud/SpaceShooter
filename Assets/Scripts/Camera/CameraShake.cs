@@ -17,7 +17,7 @@ namespace SpaceShooter.Viewport
             initialPosition = transform.position;
         }
 
-        public void OnDamageTaken(float damage)
+        public void OnDamageTaken()
         {
             Debug.Log($"Shake effect");
             StartCoroutine(CameraShakeCoroutine());

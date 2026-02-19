@@ -6,7 +6,7 @@ namespace SpaceShooter.Health
 {
     public interface IDamagerListener
     {
-        public void OnDamageTaken(float damage);
+        public void OnDamageTaken();
     }
 }
 

@@ -18,13 +18,11 @@ namespace SpaceShooter.Shooting
 
         private IBulletProvider _bulletProvider;
         private IPoolReturn _poolReturn;
-        private IEffectService _effectService;
 
-        public void Construct(IBulletProvider bulletProvider, IPoolReturn poolReturn, IEffectService effectService)
+        public void Construct(IBulletProvider bulletProvider, IPoolReturn poolReturn)
         {
             _bulletProvider = bulletProvider;
             _poolReturn = poolReturn;
-            _effectService = effectService;
         }
 
         private void Update()
@@ -44,7 +42,7 @@ namespace SpaceShooter.Shooting
             bullet.transform.position = shootPoint.position;
             bullet.transform.rotation = shootPoint.rotation;
 
-            bullet.Initialize(_poolReturn, bulletDirection, _effectService);
+            bullet.Initialize(_poolReturn, bulletDirection);
         }
     }
 }

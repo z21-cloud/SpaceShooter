@@ -25,6 +25,11 @@ namespace SpaceShooter.Health
             listeners.Add(listener);
         }
 
+        public void RemoveListener(IDamagerListener listener)
+        {
+            listeners.Remove(listener);
+        }
+
         public void TakeDamage(float damage)
         {
             Debug.Log($"Health Component: Damage recieved {gameObject.name}; Current health: {CurrentHealth}");
@@ -33,7 +38,7 @@ namespace SpaceShooter.Health
 
             foreach (var listener in listeners)
             {
-                listener.OnDamageTaken(damage);
+                listener.OnDamageTaken();
             }
 
             if (CurrentHealth <= DEATH_THRESHOLD)

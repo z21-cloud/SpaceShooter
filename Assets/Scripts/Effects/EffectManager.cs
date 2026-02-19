@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using SpaceShooter.GameConrtoller;
 
 namespace SpaceShooter.Effects
 {
@@ -8,6 +9,11 @@ namespace SpaceShooter.Effects
     {
         [SerializeField] private EffectPool pool;
         [SerializeField] private float lifeTime = 1f;
+
+        private void Awake()
+        {
+            ServiceLocator.Register(this);
+        }
 
         public void PlayHitEffect(Vector2 position)
         {

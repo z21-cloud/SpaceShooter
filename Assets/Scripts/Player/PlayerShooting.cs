@@ -20,17 +20,14 @@ namespace SpaceShooter.Shooting
         private IBulletProvider _bulletProvider;
         private IPoolReturn _poolReturn; // bullet pool to return
         private IInputProvider _input;
-        private IEffectService _effectService;
 
         public void Construct(IInputProvider input, 
             IBulletProvider bulletProvider, 
-            IPoolReturn poolReturn,
-            IEffectService effectService)
+            IPoolReturn poolReturn)
         {
             _input = input;
             _bulletProvider = bulletProvider;
             _poolReturn = poolReturn;
-            _effectService = effectService;
         }
 
         private void Update()
@@ -52,7 +49,7 @@ namespace SpaceShooter.Shooting
             bullet.transform.position = shootPoint.position;
             bullet.transform.rotation = shootPoint.rotation;
 
-            bullet.Initialize(_poolReturn, bulletDirection, _effectService);
+            bullet.Initialize(_poolReturn, bulletDirection);
         }
     }
 }
