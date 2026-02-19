@@ -343,6 +343,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -480,6 +481,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcfac776b535f504a8330d78c5fdc68c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37ba42b56730ca47bfd4b685c640e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0.35
+  shakeMagnitude: 0.15
 --- !u!1 &528429188
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,6 +1000,7 @@ MonoBehaviour:
   _pathManager: {fileID: 2050203884}
   _waveConrtoller: {fileID: 2088752201}
   _effectManager: {fileID: 2088752202}
+  _playerCameraShake: {fileID: 519420034}
 --- !u!1 &1814830773
 GameObject:
   m_ObjectHideFlags: 0

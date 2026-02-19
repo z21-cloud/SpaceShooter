@@ -12,6 +12,7 @@ using SpaceShooter.PathManagement;
 using SpaceShooter.WaveManagement;
 using SpaceShooter.Shooting;
 using SpaceShooter.Effects;
+using SpaceShooter.Health;
 
 namespace SpaceShooter.GameConrtoller
 {
@@ -39,6 +40,7 @@ namespace SpaceShooter.GameConrtoller
 
         [Header("Effects")]
         [SerializeField] private EffectManager _effectManager;
+        [SerializeField] private CameraShake _playerCameraShake;
 
         private void Awake()
         {
@@ -64,6 +66,10 @@ namespace SpaceShooter.GameConrtoller
             _waveConrtoller.Construct(
                 _enemySpawner
             );
+
+            // listeners to shake effect
+            HealthComponent _playerHealth = _playerMovement.GetComponent<HealthComponent>();
+            _playerHealth.AddListener(_playerCameraShake);
         }
 
         private void Start()

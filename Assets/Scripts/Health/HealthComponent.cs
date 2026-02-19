@@ -13,10 +13,16 @@ namespace SpaceShooter.Health
         public float CurrentHealth { get; private set; }
 
         private const float DEATH_THRESHOLD = 0f;
+        private List<IDamagerListener> listeners = new List<IDamagerListener>();
 
         private void OnEnable()
         {
             ResetHealth();
+        }
+
+        public void AddListener(IDamagerListener listener)
+        {
+            listeners.Add(listener);
         }
 
         public void TakeDamage(float damage)
@@ -25,7 +31,12 @@ namespace SpaceShooter.Health
             CurrentHealth -= damage;
             CurrentHealth = Mathf.Max(CurrentHealth, DEATH_THRESHOLD);
 
-            if(CurrentHealth <= DEATH_THRESHOLD)
+            foreach (var listener in listeners)
+            {
+                listener.OnDamageTaken(damage);
+            }
+
+            if (CurrentHealth <= DEATH_THRESHOLD)
             {
                 if (gameObject.TryGetComponent<IDeath>(out var deathable))
                 {
