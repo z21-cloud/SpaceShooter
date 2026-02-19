@@ -5,6 +5,7 @@ using SpaceShooter.PlayerInput;
 using System;
 using SpaceShooter.Pooling;
 using SpaceShooter.Effects;
+using SpaceShooter.Audio;
 
 namespace SpaceShooter.Shooting
 {
@@ -17,17 +18,20 @@ namespace SpaceShooter.Shooting
 
         private float currentTimer = 0f;
 
+        private IInputProvider _input;
         private IBulletProvider _bulletProvider;
         private IPoolReturn _poolReturn; // bullet pool to return
-        private IInputProvider _input;
+        private IAudioProvider _audioProvider;
 
         public void Construct(IInputProvider input, 
             IBulletProvider bulletProvider, 
-            IPoolReturn poolReturn)
+            IPoolReturn poolReturn,
+            IAudioProvider audioProvider)
         {
             _input = input;
             _bulletProvider = bulletProvider;
             _poolReturn = poolReturn;
+            _audioProvider = audioProvider;
         }
 
         private void Update()
@@ -50,6 +54,8 @@ namespace SpaceShooter.Shooting
             bullet.transform.rotation = shootPoint.rotation;
 
             bullet.Initialize(_poolReturn, bulletDirection);
+            
+            _audioProvider.PlayShootingSFX();
         }
     }
 }

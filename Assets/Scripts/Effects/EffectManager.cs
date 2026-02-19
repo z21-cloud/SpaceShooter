@@ -7,6 +7,7 @@ namespace SpaceShooter.Effects
 {
     public class EffectManager : MonoBehaviour, IEffectService
     {
+        [Header("Effect manager set-up")]
         [SerializeField] private EffectPool pool;
         [SerializeField] private float lifeTime = 1f;
 

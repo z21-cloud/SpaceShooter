@@ -10,6 +10,7 @@ namespace SpaceShooter.Shooting
 {
     public class EnemyShooting : MonoBehaviour
     {
+        [Header("Enemies shooting set-up")]
         [SerializeField] private float timeBetweenShots = 1f;
         [SerializeField] private Transform shootPoint;
         [SerializeField] private Vector2 bulletDirection = Vector2.down;

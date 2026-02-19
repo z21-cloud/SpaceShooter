@@ -13,6 +13,7 @@ using SpaceShooter.WaveManagement;
 using SpaceShooter.Shooting;
 using SpaceShooter.Effects;
 using SpaceShooter.Health;
+using SpaceShooter.Audio;
 
 namespace SpaceShooter.GameConrtoller
 {
@@ -34,12 +35,14 @@ namespace SpaceShooter.GameConrtoller
         [SerializeField] private EnemyPool _enemyPool;
         [SerializeField] private BulletPool _enemyBulletPool;
 
+        // game world
         [Header("Wave & path set-up")]
         [SerializeField] private PathManager _pathManager;
         [SerializeField] private WaveController _waveConrtoller;
 
         [Header("Effects")]
         [SerializeField] private CameraShake _playerCameraShake;
+        [SerializeField] private AudioManager _audioManager;
 
         private void Awake()
         {
@@ -51,7 +54,8 @@ namespace SpaceShooter.GameConrtoller
             _playerShooting.Construct(
                 _inputManager,
                 _playerBulletPool,
-                _playerBulletPool
+                _playerBulletPool,
+                _audioManager
             );
 
             _enemySpawner.Construct(

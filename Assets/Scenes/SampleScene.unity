@@ -999,8 +999,8 @@ MonoBehaviour:
   _enemyBulletPool: {fileID: 1250844307}
   _pathManager: {fileID: 2050203884}
   _waveConrtoller: {fileID: 2088752201}
-  _effectManager: {fileID: 2088752202}
   _playerCameraShake: {fileID: 519420034}
+  _audioManager: {fileID: 2088752203}
 --- !u!1 &1814830773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,6 +1187,7 @@ GameObject:
   - component: {fileID: 2088752200}
   - component: {fileID: 2088752201}
   - component: {fileID: 2088752202}
+  - component: {fileID: 2088752203}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1252,6 +1253,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool: {fileID: 2074775542}
   lifeTime: 1
+--- !u!114 &2088752203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088752198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a21fdc0296e68ce40aa161861159caa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingClip: {fileID: 8300000, guid: 7b3cdc60e2eb31448b6339a7ae51c12b, type: 3}
+  shootingVolume: 0.1
 --- !u!1001 &1134204532518354474
 PrefabInstance:
   m_ObjectHideFlags: 0
