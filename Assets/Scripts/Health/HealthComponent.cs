@@ -10,6 +10,7 @@ namespace SpaceShooter.Health
         [Header("Health set-up")]
         [SerializeField] private float maxHealth = 100f;
         [SerializeField] private float startHealth = 100f;
+        
         public float CurrentHealth { get; private set; }
 
         private const float DEATH_THRESHOLD = 0f;

@@ -11,10 +11,13 @@ namespace SpaceShooter.WaveManagement
         [Header("Wave config")]
         [SerializeField] private List<WaveConfigSO> waveConfig;
         [SerializeField] private float delayBetweenEnemySpawns = 1f;
+        [SerializeField] private float spawnTimerOffset = 0.2f;
+        [SerializeField] private float minimumTimeToSpawn = 0.5f;
         [SerializeField] private float delayBetweenWaves = 3f;
 
-        private EnemySpawner enemySpawner;
         private int currentWaveIndex = 0;
+        private float timer = 0f;
+        private EnemySpawner enemySpawner;
         private bool isSpawning = false;
 
         public void Construct(EnemySpawner spawner)
@@ -68,9 +71,11 @@ namespace SpaceShooter.WaveManagement
             {
                 enemySpawner.SpawnEnemy(waveIndex);
 
+                timer = Random.Range(delayBetweenEnemySpawns - spawnTimerOffset, delayBetweenEnemySpawns + spawnTimerOffset);
+                timer = Mathf.Clamp(timer, minimumTimeToSpawn, delayBetweenWaves); // delay between wave as max threshold
                 if (i < enemiesCount - 1)
                 {
-                    yield return new WaitForSeconds(delayBetweenEnemySpawns);
+                    yield return new WaitForSeconds(timer);
                 }
             }
         }

@@ -1000,7 +1000,6 @@ MonoBehaviour:
   _pathManager: {fileID: 2050203884}
   _waveConrtoller: {fileID: 2088752201}
   _playerCameraShake: {fileID: 519420034}
-  _audioManager: {fileID: 2088752203}
 --- !u!1 &1814830773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,6 +1237,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2ecaa4ccaef970543994bcba276ef7e4, type: 2}
   - {fileID: 11400000, guid: 8d7cd489325b93249b55986a0128e826, type: 2}
   delayBetweenEnemySpawns: 1
+  spawnTimerOffset: 0.5
+  minimumTimeToSpawn: 0.5
   delayBetweenWaves: 10
 --- !u!114 &2088752202
 MonoBehaviour:
