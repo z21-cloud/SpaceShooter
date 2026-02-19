@@ -5,6 +5,7 @@ using SpaceShooter.Pooling;
 using System;
 using SpaceShooter.Health;
 using SpaceShooter.Effects;
+using SpaceShooter.Audio;
 using SpaceShooter.GameConrtoller;
 
 namespace SpaceShooter.Shooting
@@ -54,7 +55,8 @@ namespace SpaceShooter.Shooting
                 Debug.Log(collision.gameObject.name);
                 damageable.TakeDamage(damage);
 
-                ServiceLocator.GetEffectService().PlayHitEffect(transform.position);
+                ServiceLocator.Get<IEffectService>().PlayHitEffect(transform.position);
+                ServiceLocator.Get<IDamageAudioProvider>().PlayDamageSFX();
 
                 ReturnToPool();
             }

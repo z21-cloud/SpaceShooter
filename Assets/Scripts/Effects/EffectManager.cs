@@ -13,7 +13,7 @@ namespace SpaceShooter.Effects
 
         private void Awake()
         {
-            ServiceLocator.Register(this);
+            ServiceLocator.Register<IEffectService>(this);
         }
 
         public void PlayHitEffect(Vector2 position)

@@ -42,7 +42,6 @@ namespace SpaceShooter.GameConrtoller
 
         [Header("Effects")]
         [SerializeField] private CameraShake _playerCameraShake;
-        [SerializeField] private AudioManager _audioManager;
 
         private void Awake()
         {
@@ -54,8 +53,7 @@ namespace SpaceShooter.GameConrtoller
             _playerShooting.Construct(
                 _inputManager,
                 _playerBulletPool,
-                _playerBulletPool,
-                _audioManager
+                _playerBulletPool
             );
 
             _enemySpawner.Construct(

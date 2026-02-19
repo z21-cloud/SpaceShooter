@@ -6,6 +6,7 @@ using System;
 using SpaceShooter.Pooling;
 using SpaceShooter.Effects;
 using SpaceShooter.Audio;
+using SpaceShooter.GameConrtoller;
 
 namespace SpaceShooter.Shooting
 {
@@ -21,17 +22,14 @@ namespace SpaceShooter.Shooting
         private IInputProvider _input;
         private IBulletProvider _bulletProvider;
         private IPoolReturn _poolReturn; // bullet pool to return
-        private IAudioProvider _audioProvider;
 
         public void Construct(IInputProvider input, 
             IBulletProvider bulletProvider, 
-            IPoolReturn poolReturn,
-            IAudioProvider audioProvider)
+            IPoolReturn poolReturn)
         {
             _input = input;
             _bulletProvider = bulletProvider;
             _poolReturn = poolReturn;
-            _audioProvider = audioProvider;
         }
 
         private void Update()
@@ -55,7 +53,7 @@ namespace SpaceShooter.Shooting
 
             bullet.Initialize(_poolReturn, bulletDirection);
             
-            _audioProvider.PlayShootingSFX();
+            ServiceLocator.Get<IShootingAudioProvider>().PlayShootingSFX();
         }
     }
 }

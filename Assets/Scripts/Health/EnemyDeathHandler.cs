@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using SpaceShooter.Pooling;
-using System;
+using SpaceShooter.Audio;
+using SpaceShooter.GameConrtoller;
 
 namespace SpaceShooter.Health
 {
@@ -18,6 +19,8 @@ namespace SpaceShooter.Health
         public void Death()
         {
             Debug.Log($"Death Component: Death {gameObject.name}");
+            
+            ServiceLocator.Get<IDeathAudioProvider>().PlayDeathSFX();
 
             ReturnToPool();
         }

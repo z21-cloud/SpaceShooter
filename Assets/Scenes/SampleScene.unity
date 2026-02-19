@@ -1267,6 +1267,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingClip: {fileID: 8300000, guid: 7b3cdc60e2eb31448b6339a7ae51c12b, type: 3}
   shootingVolume: 0.1
+  damageClip: {fileID: 8300000, guid: 6d34f9e12fa0bf742bc06d8b9418cbb9, type: 3}
+  damageVolume: 0.1
+  deathClip: {fileID: 8300000, guid: 4e060e25800422a42b299f99d1b0424f, type: 3}
+  deathVolume: 0.1
 --- !u!1001 &1134204532518354474
 PrefabInstance:
   m_ObjectHideFlags: 0

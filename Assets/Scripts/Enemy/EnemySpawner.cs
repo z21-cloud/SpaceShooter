@@ -8,6 +8,7 @@ using SpaceShooter.PathManagement;
 using SpaceShooter.Health;
 using SpaceShooter.Shooting;
 using SpaceShooter.Effects;
+using SpaceShooter.Audio;
 
 namespace SpaceShooter.EnemiesSpawner
 {
@@ -51,7 +52,8 @@ namespace SpaceShooter.EnemiesSpawner
 
             if(enemy.TryGetComponent<EnemyShooting>(out var enemyShooting))
             {
-                enemyShooting.Construct(bulletPool, bulletPool);
+                //                      IBulletProvider, IPoolReturn
+                enemyShooting.Construct(bulletPool, bulletPool); 
             }
         }
     }
