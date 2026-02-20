@@ -58,7 +58,7 @@ namespace SpaceShooter.Health
             Debug.Log($"Health Component: Heal recieved {gameObject.name}; Current health: {CurrentHealth}");
 
             CurrentHealth += amount;
-            CurrentHealth = Mathf.Max(CurrentHealth, maxHealth);    
+            CurrentHealth = Mathf.Min(CurrentHealth, maxHealth);    
         }
 
         private void OnDisable()
