@@ -14,6 +14,7 @@ using SpaceShooter.Shooting;
 using SpaceShooter.Effects;
 using SpaceShooter.Health;
 using SpaceShooter.Audio;
+using SpaceShooter.Score;
 
 namespace SpaceShooter.GameConrtoller
 {
@@ -43,6 +44,9 @@ namespace SpaceShooter.GameConrtoller
         [Header("Effects")]
         [SerializeField] private CameraShake _playerCameraShake;
 
+        [Header("Score")]
+        [SerializeField] private ScoreConrtoller _scoreConrtoller;
+            
         private void Awake()
         {
             _playerMovement.Construct(
@@ -68,7 +72,8 @@ namespace SpaceShooter.GameConrtoller
 
             // listeners to shake effect
             HealthComponent _playerHealth = _playerMovement.GetComponent<HealthComponent>();
-            _playerHealth.AddListener(_playerCameraShake);
+            _playerHealth.AddDamageListener(_playerCameraShake);
+            _playerHealth.AddScoreListener(_scoreConrtoller);
         }
 
         private void Start()

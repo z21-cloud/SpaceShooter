@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using SpaceShooter.Pooling;
 using SpaceShooter.Audio;
 using SpaceShooter.GameConrtoller;
+using SpaceShooter.Score;
 
 namespace SpaceShooter.Health
 {
     public class EnemyDeathHandler : MonoBehaviour, IDeath
     {
+        [Header("Score Reward")]
+        [SerializeField] private int scoreReward = 50;
         private IPoolReturn pool;
 
         public void Initialize(IPoolReturn pool)
@@ -21,7 +24,7 @@ namespace SpaceShooter.Health
             Debug.Log($"Death Component: Death {gameObject.name}");
             
             ServiceLocator.Get<IDeathAudioProvider>().PlayDeathSFX();
-
+            ServiceLocator.Get<IScoreEncrease>().EncreaseScore(scoreReward);
             ReturnToPool();
         }
 

@@ -541,7 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4920552409348238472, guid: 17f316fbc6bbe124ca06695071874655, type: 3}
-  _enemyPoolSize: 4
+  _enemyPoolSize: 100
   _enemyTransformParent: {fileID: 528429189}
 --- !u!114 &528429192
 MonoBehaviour:
@@ -912,6 +912,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1411048464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411048453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d46dbaf01f1b8649827e0f5c971c94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScore: 0
 --- !u!1 &1789060817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,6 +1013,7 @@ MonoBehaviour:
   _pathManager: {fileID: 2050203884}
   _waveConrtoller: {fileID: 2088752201}
   _playerCameraShake: {fileID: 519420034}
+  _scoreConrtoller: {fileID: 2088752204}
 --- !u!1 &1814830773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,6 +1201,7 @@ GameObject:
   - component: {fileID: 2088752201}
   - component: {fileID: 2088752202}
   - component: {fileID: 2088752203}
+  - component: {fileID: 2088752204}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1272,6 +1287,20 @@ MonoBehaviour:
   damageVolume: 0.1
   deathClip: {fileID: 8300000, guid: 4e060e25800422a42b299f99d1b0424f, type: 3}
   deathVolume: 0.1
+--- !u!114 &2088752204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088752198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a10dd55f10dd3bf4ba246f31b0145276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScore: {fileID: 1411048464}
+  decraseScoreAmount: 10
 --- !u!1001 &1134204532518354474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1352,6 +1381,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4241185242419634706, guid: 8338020959f14cc4ebfc4d7b0076de3f, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 1411048464}
     - targetCorrespondingSourceObject: {fileID: 4241185242419634706, guid: 8338020959f14cc4ebfc4d7b0076de3f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1411048459}

@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using SpaceShooter.GameConrtoller;
+using SpaceShooter.Score;
 
 namespace SpaceShooter.Health
 {
@@ -9,10 +11,12 @@ namespace SpaceShooter.Health
         public void Death()
         {
             Debug.Log($"Player Death Handler: {gameObject.name}");
-            Destroy(gameObject);
+
+            ServiceLocator.Get<IScoreReset>().ResetScore();
 
             // effects & UI 
             // based on events. Destroy for testing
+            Destroy(gameObject);
         }
     }
 }
