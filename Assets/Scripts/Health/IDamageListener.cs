@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SpaceShooter.Health
 {
-    public interface IDamagerListener
+    public interface IDamageListener
     {
         public void OnDamageTaken();
     }

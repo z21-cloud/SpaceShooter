@@ -15,6 +15,7 @@ using SpaceShooter.Effects;
 using SpaceShooter.Health;
 using SpaceShooter.Audio;
 using SpaceShooter.Score;
+using SpaceShooter.UI;
 
 namespace SpaceShooter.GameConrtoller
 {
@@ -46,9 +47,20 @@ namespace SpaceShooter.GameConrtoller
 
         [Header("Score")]
         [SerializeField] private ScoreConrtoller _scoreConrtoller;
+        [SerializeField] private ScoreManager _scoreManager;
+
+        [Header("User Interface")]
+        [SerializeField] private UIManager _uiManager;
             
         private void Awake()
         {
+            // health component needs initialization for listeners
+            HealthComponent _playerHealth = _playerMovement.GetComponent<HealthComponent>();
+            // listener to shake effect
+            _playerHealth.AddListener(_playerCameraShake);
+            // listener to decrease score, when playr gets hit
+            _playerHealth.AddListener(_scoreConrtoller);
+
             _playerMovement.Construct(
                 _inputManager, 
                 _viewPort
@@ -70,10 +82,10 @@ namespace SpaceShooter.GameConrtoller
                 _enemySpawner
             );
 
-            // listeners to shake effect
-            HealthComponent _playerHealth = _playerMovement.GetComponent<HealthComponent>();
-            _playerHealth.AddDamageListener(_playerCameraShake);
-            _playerHealth.AddScoreListener(_scoreConrtoller);
+            _uiManager.Construct(
+                _playerHealth,
+                _scoreManager
+            );
         }
 
         private void Start()

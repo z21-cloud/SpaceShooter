@@ -24,7 +24,8 @@ namespace SpaceShooter.Health
             Debug.Log($"Death Component: Death {gameObject.name}");
             
             ServiceLocator.Get<IDeathAudioProvider>().PlayDeathSFX();
-            ServiceLocator.Get<IScoreEncrease>().EncreaseScore(scoreReward);
+            ServiceLocator.Get<IScoreIncrease>().IncreaseScore(scoreReward);
+
             ReturnToPool();
         }
 

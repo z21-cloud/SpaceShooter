@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace SpaceShooter.Score
 {
-    public interface IScoreEncrease
+    public interface IScoreIncrease
     {
-        public void EncreaseScore(int value);
+        public void IncreaseScore(int value);
     }
 }

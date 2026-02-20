@@ -5,22 +5,21 @@ using SpaceShooter.GameConrtoller;
 
 namespace SpaceShooter.Score
 {
-    public class PlayerScore : MonoBehaviour, IScoreProvider, IScoreEncrease, IScoreDecrease, IScoreReset
+    public class ScoreManager : MonoBehaviour, IScoreProvider, IScoreIncrease, IScoreReset
     {
-        [SerializeField] private int currentScore = 0;
-
         public int CurrentScore { get; private set; }
 
         private const int SCORE_THRESHOLD = 0;
 
         private void Awake()
         {
-            ServiceLocator.Register<IScoreEncrease>(this);
+            ServiceLocator.Register<IScoreIncrease>(this);
             ServiceLocator.Register<IScoreReset>(this);
-            CurrentScore = currentScore;
+
+            ResetScore();
         }
 
-        public void EncreaseScore(int value)
+        public void IncreaseScore(int value)
         {
             CurrentScore += value;
             CurrentScore = Mathf.Clamp(CurrentScore, SCORE_THRESHOLD, int.MaxValue);

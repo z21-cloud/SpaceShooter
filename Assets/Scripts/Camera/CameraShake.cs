@@ -5,7 +5,7 @@ using SpaceShooter.Health;
 
 namespace SpaceShooter.Viewport
 {
-    public class CameraShake : MonoBehaviour, IDamagerListener
+    public class CameraShake : MonoBehaviour, IDamageListener
     {
         [Header("Camera shake set-up")]
         [SerializeField] private float shakeDuration = 0.5f;
