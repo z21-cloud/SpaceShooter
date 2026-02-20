@@ -7,6 +7,7 @@ namespace SpaceShooter.Score
 {
     public class ScoreManager : MonoBehaviour, IScoreProvider, IScoreIncrease, IScoreReset
     {
+        [SerializeField] private ScoreDataSO scoreData;
         public int CurrentScore { get; private set; }
 
         private const int SCORE_THRESHOLD = 0;
@@ -23,6 +24,9 @@ namespace SpaceShooter.Score
         {
             CurrentScore += value;
             CurrentScore = Mathf.Clamp(CurrentScore, SCORE_THRESHOLD, int.MaxValue);
+
+            scoreData.LastSessionScore = CurrentScore;
+
             Debug.Log($"PlayerScore: Current Score: {CurrentScore}");
         }
 
@@ -30,6 +34,9 @@ namespace SpaceShooter.Score
         {
             CurrentScore -= value;
             CurrentScore = Mathf.Clamp(CurrentScore, SCORE_THRESHOLD, int.MaxValue);
+
+            scoreData.LastSessionScore = CurrentScore;
+
             Debug.Log($"PlayerScore: Current Score: {CurrentScore}");
         }
 

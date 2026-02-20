@@ -1863,6 +1863,7 @@ GameObject:
   - component: {fileID: 2088752204}
   - component: {fileID: 2088752205}
   - component: {fileID: 2088752206}
+  - component: {fileID: 2088752207}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1974,6 +1975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d46dbaf01f1b8649827e0f5c971c94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreData: {fileID: 11400000, guid: ed078d4a5111b8a429c6b74be95117c9, type: 2}
 --- !u!114 &2088752206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1988,6 +1990,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1468052985}
   scoreText: {fileID: 2000939133}
+--- !u!114 &2088752207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088752198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dce795e63fe9ebd4db9b0c251705b1c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1134204532518354474
 PrefabInstance:
   m_ObjectHideFlags: 0
